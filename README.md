@@ -27,12 +27,15 @@ Verifique sua versão do Python com:
 
 2. Criando Ambiente Virtual:
 
-### Windows
+- Windows
+
 ```sh
     python -m venv venv
     venv\Scripts\activate
 ```
-### Linux / Mac
+
+- Linux / Mac
+
 ```sh
     python3 -m venv venv
     source venv/bin/activate
