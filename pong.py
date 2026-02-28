@@ -14,6 +14,7 @@ dificuldade = 1
 
 score1 = 0
 score2 = 0
+color = "white"
 
 player1 = pygame.Rect(30, screen.get_height() / 2 - 50, 20, 100)
 player2 = pygame.Rect(950, screen.get_height() / 2 - 50, 20, 100)
@@ -72,8 +73,8 @@ def start_game(dificuldade):
     game_state = "playing"
     start_ball(dificuldade)
 
-def draw_text(text, size, color, x, y):
-    font = pygame.font.Font("PressStart2P-Regular.ttf", size)
+def draw_text(text, size, x, y):
+    font = pygame.font.Font("PressStart2P-Regular.ttf", size)    
     surface = font.render(text, True, color)
     screen.blit(surface, (x, y))
 
@@ -107,25 +108,35 @@ while running:
     if game_state == "start_menu":
         mouse_pos = pygame.mouse.get_pos()
 
-        draw_text("PONG", 60, "white", screen.get_width() / 2 - 130, 180)
-        draw_text("Espaço para jogar", 30, "white", screen.get_width() / 2 - 250, 260)
-        draw_text("Dificuldade: ", 30, "white", screen.get_width() / 2 - 250, 310)
-        draw_text(f"< {dificuldade} >", 30, "white", screen.get_width() / 2 + 100, 310)
+        draw_text("PONG", 60, screen.get_width() / 2 - 130, 180)
+        draw_text("Espaço para jogar", 30, screen.get_width() / 2 - 250, 260)
+        draw_text("Dificuldade: ", 30, screen.get_width() / 2 - 250, 310)
+        draw_text(f"< {dificuldade} >", 30, screen.get_width() / 2 + 100, 310)
 
-        draw_text("Player 1", 25, "white", 20, screen.get_height() - 140)
-        draw_text("W para cima", 15, "white", 20, screen.get_height() - 90)
-        draw_text("S para baixo", 15, "white", 20, screen.get_height() - 60)
-        draw_text("Player 2", 25, "white", screen.get_width() - 215, screen.get_height() - 140)
-        draw_text("Seta para cima", 15, "white", screen.get_width() - 225, screen.get_height() - 90)
-        draw_text("Seta para baixo", 15, "white", screen.get_width() - 240, screen.get_height() - 60)
+        if dificuldade == 4:
+            color = "red"
+        else:
+            color = "white"
+
+        draw_text("Player 1", 25, 20, screen.get_height() - 140)
+        draw_text("W para cima", 15, 20, screen.get_height() - 90)
+        draw_text("S para baixo", 15, 20, screen.get_height() - 60)
+        draw_text("Player 2", 25, screen.get_width() - 215, screen.get_height() - 140)
+        draw_text("Seta para cima", 15, screen.get_width() - 225, screen.get_height() - 90)
+        draw_text("Seta para baixo", 15, screen.get_width() - 240, screen.get_height() - 60)
 
     if game_state == "pause":
         winner_text = f"Player {winner} ganhou!"
-        draw_text(winner_text, 30, "white", screen.get_width() / 2 - 230, 150)
-        draw_text(f"{score1} - {score2}", 50, "white", screen.get_width() / 2 - 130, 50)
-        draw_text("Espaço para jogar novamente", 20, "white", screen.get_width() / 2 - 270, screen.get_height() - 150)
-        draw_text("Dificuldade: ", 30, "white", screen.get_width() / 2 - 250, screen.get_height() - 100)
-        draw_text(f"< {dificuldade} >", 30, "white", screen.get_width() / 2 + 100, screen.get_height() - 100)
+        draw_text(winner_text, 30, screen.get_width() / 2 - 230, 150)
+        draw_text(f"{score1} - {score2}", 50, screen.get_width() / 2 - 130, 50)
+        draw_text("Espaço para jogar novamente", 20, screen.get_width() / 2 - 270, screen.get_height() - 150)
+        draw_text("Dificuldade: ", 30, screen.get_width() / 2 - 250, screen.get_height() - 100)
+        draw_text(f"< {dificuldade} >", 30, screen.get_width() / 2 + 100, screen.get_height() - 100)
+
+        if dificuldade == 4:
+            color = "red"
+        else:
+            color = "white"
 
     elif game_state == "playing":
         if score1 == 3:
@@ -138,11 +149,11 @@ while running:
             ball_vel.update(0, 0)
             game_state = "pause"
 
-        draw_text(f"{score1} - {score2}", 50, "white", screen.get_width() / 2 - 130, 50)
+        draw_text(f"{score1} - {score2}", 50, screen.get_width() / 2 - 130, 50)
 
-        pygame.draw.rect(screen, "white", player1)
-        pygame.draw.rect(screen, "white", player2)
-        pygame.draw.circle(screen, "white", ball_rect.center, radius)
+        pygame.draw.rect(screen, color, player1)
+        pygame.draw.rect(screen, color, player2)
+        pygame.draw.circle(screen, color, ball_rect.center, radius)
 
         ball_rect.x += ball_vel.x * dt
         ball_rect.y += ball_vel.y * dt
