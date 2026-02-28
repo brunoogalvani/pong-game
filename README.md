@@ -2,7 +2,6 @@
 
 Desenvolvimento do clássico jogo Pong utilizando Python e Pygame.
 
-------------------------------------------------------------------------
 
 ## Pré-requisitos
 
@@ -12,47 +11,44 @@ Antes de executar o projeto, você precisa ter instalado:
 -   pip
 
 Verifique sua versão do Python com:
-```bash
+
+```sh
     python --version
 ```
-------------------------------------------------------------------------
 
-## Clonando o Repositório
-```bash
+## Como executar o projeto
+
+1. Clonando o Repositório:
+
+```sh
     git clone https://github.com/seuusuario/seurepositorio.git
     cd seurepositorio
 ```
-------------------------------------------------------------------------
 
-## Criando Ambiente Virtual
+2. Criando Ambiente Virtual:
 
 ### Windows
-```bash
+```sh
     python -m venv venv
     venv\Scripts\activate
 ```
 ### Linux / Mac
-```bash
+```sh
     python3 -m venv venv
     source venv/bin/activate
 ```
-------------------------------------------------------------------------
 
-## Instalando Dependências
+3. Instalando Dependências:
 
-Se existir um requirements.txt:
-```bash
+```sh
     pip install -r requirements.txt
 ```
 
-------------------------------------------------------------------------
+4. Executando o Jogo:
 
-## Executando o Jogo
-```bash
+```sh
     python pong.py
 ```
-
-------------------------------------------------------------------------
 
 ## Como Jogar
 
@@ -65,4 +61,3 @@ Se existir um requirements.txt:
     - Seta ↓ (descer)
 
 O jogo termina quando um dos jogadores atingir 3 pontos.
-
