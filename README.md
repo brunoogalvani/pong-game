@@ -21,8 +21,8 @@ Verifique sua versão do Python com:
 1. Clonando o Repositório:
 
 ```sh
-    git clone https://github.com/seuusuario/seurepositorio.git
-    cd seurepositorio
+    git clone git@github.com:brunoogalvani/pong-game.git
+    cd pong-game
 ```
 
 2. Criando Ambiente Virtual:

@@ -4,6 +4,7 @@ import math
 
 pygame.init()
 screen = pygame.display.set_mode((1000, 600))
+pygame.display.set_caption('PONG')
 clock = pygame.time.Clock()
 dt = 0
 running = True
@@ -90,7 +91,7 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-        if game_state == "start_menu" or game_state == "pause":
+        if game_state == "start_menu":
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
                     start_game(dificuldade)
@@ -102,6 +103,14 @@ while running:
                 if event.key == pygame.K_RIGHT:
                     if dificuldade < 4:
                         dificuldade += 1
+        elif game_state == "pause":
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    game_state = "start_menu"
+
+                if event.key == pygame.K_SPACE:
+                    start_game(dificuldade)
+
     
     screen.fill("black")
 
@@ -129,9 +138,8 @@ while running:
         winner_text = f"Player {winner} ganhou!"
         draw_text(winner_text, 30, screen.get_width() / 2 - 230, 150)
         draw_text(f"{score1} - {score2}", 50, screen.get_width() / 2 - 130, 50)
-        draw_text("Espaço para jogar novamente", 20, screen.get_width() / 2 - 270, screen.get_height() - 150)
-        draw_text("Dificuldade: ", 30, screen.get_width() / 2 - 250, screen.get_height() - 100)
-        draw_text(f"< {dificuldade} >", 30, screen.get_width() / 2 + 100, screen.get_height() - 100)
+        draw_text("Espaço para jogar novamente", 20, screen.get_width() / 2 - 270, screen.get_height() - 130)
+        draw_text("ESC para voltar ao início", 20, screen.get_width() / 2 - 250, screen.get_height() - 80)
 
         if dificuldade == 4:
             color = "red"
