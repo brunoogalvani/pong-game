@@ -103,7 +103,7 @@ while running:
                 if event.key == pygame.K_RIGHT:
                     if dificuldade < 4:
                         dificuldade += 1
-        elif game_state == "pause":
+        elif game_state == "winner_screen":
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     game_state = "start_menu"
@@ -134,7 +134,7 @@ while running:
         draw_text("Seta para cima", 15, screen.get_width() - 225, screen.get_height() - 90)
         draw_text("Seta para baixo", 15, screen.get_width() - 240, screen.get_height() - 60)
 
-    if game_state == "pause":
+    if game_state == "winner_screen":
         winner_text = f"Player {winner} ganhou!"
         draw_text(winner_text, 30, screen.get_width() / 2 - 230, 150)
         draw_text(f"{score1} - {score2}", 50, screen.get_width() / 2 - 130, 50)
@@ -150,12 +150,12 @@ while running:
         if score1 == 3:
             winner = 1
             ball_vel.update(0, 0)
-            game_state = "pause"
+            game_state = "winner_screen"
         
         if score2 == 3:
             winner = 2
             ball_vel.update(0, 0)
-            game_state = "pause"
+            game_state = "winner_screen"
 
         draw_text(f"{score1} - {score2}", 50, screen.get_width() / 2 - 130, 50)
 
